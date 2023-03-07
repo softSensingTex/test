@@ -1,0 +1,1230 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Welcome8",
+    "definitions": {
+        "Welcome8": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "openapi": {
+                    "type": "string"
+                },
+                "x-stoplight": {
+                    "$ref": "#/definitions/XStoplight"
+                },
+                "info": {
+                    "$ref": "#/definitions/Info"
+                },
+                "servers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Server"
+                    }
+                },
+                "paths": {
+                    "$ref": "#/definitions/Paths"
+                },
+                "components": {
+                    "$ref": "#/definitions/Components"
+                }
+            },
+            "required": [
+                "components",
+                "info",
+                "openapi",
+                "paths",
+                "servers",
+                "x-stoplight"
+            ],
+            "title": "Welcome8"
+        },
+        "Components": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "schemas": {
+                    "$ref": "#/definitions/Schemas"
+                }
+            },
+            "required": [
+                "schemas"
+            ],
+            "title": "Components"
+        },
+        "Schemas": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "Log": {
+                    "$ref": "#/definitions/Log"
+                }
+            },
+            "required": [
+                "Log"
+            ],
+            "title": "Schemas"
+        },
+        "Log": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "x-stoplight": {
+                    "$ref": "#/definitions/XStoplight"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "examples": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Example"
+                    }
+                },
+                "properties": {
+                    "$ref": "#/definitions/LogProperties"
+                },
+                "required": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "description",
+                "examples",
+                "properties",
+                "required",
+                "title",
+                "type",
+                "x-stoplight"
+            ],
+            "title": "Log"
+        },
+        "Example": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "objectId": {
+                    "type": "string"
+                },
+                "time": {
+                    "type": "integer"
+                },
+                "isEntrance": {
+                    "type": "boolean"
+                },
+                "counterModification": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "counterModification",
+                "isEntrance",
+                "objectId",
+                "time"
+            ],
+            "title": "Example"
+        },
+        "LogProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "objectId": {
+                    "$ref": "#/definitions/DeviceHardwareSerial"
+                },
+                "deviceHardwareSerial": {
+                    "$ref": "#/definitions/DeviceHardwareSerial"
+                },
+                "creationDate": {
+                    "$ref": "#/definitions/CreationDate"
+                },
+                "isEntrance": {
+                    "$ref": "#/definitions/IsEntrance"
+                },
+                "counterModification": {
+                    "$ref": "#/definitions/CounterModification"
+                }
+            },
+            "required": [
+                "counterModification",
+                "creationDate",
+                "deviceHardwareSerial",
+                "isEntrance",
+                "objectId"
+            ],
+            "title": "LogProperties"
+        },
+        "CounterModification": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "default": {
+                    "type": "integer"
+                },
+                "minimum": {
+                    "type": "integer"
+                },
+                "enum": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "required": [
+                "description",
+                "type"
+            ],
+            "title": "CounterModification"
+        },
+        "CreationDate": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "format": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "description",
+                "format",
+                "type"
+            ],
+            "title": "CreationDate"
+        },
+        "DeviceHardwareSerial": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "description",
+                "type"
+            ],
+            "title": "DeviceHardwareSerial"
+        },
+        "IsEntrance": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "default": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "default",
+                "description",
+                "type"
+            ],
+            "title": "IsEntrance"
+        },
+        "XStoplight": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "XStoplight"
+        },
+        "Info": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "title",
+                "version"
+            ],
+            "title": "Info"
+        },
+        "Paths": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "/logs/{HardwareSerial}": {
+                    "$ref": "#/definitions/LogsHardwareSerial"
+                },
+                "/counter/{HardwareSerial}": {
+                    "$ref": "#/definitions/CounterHardwareSerial"
+                },
+                "/capacity/{HardwareSerial}": {
+                    "$ref": "#/definitions/CapacityHardwareSerial"
+                },
+                "/polarity/{HardwareSerial}": {
+                    "$ref": "#/definitions/PolarityHardwareSerial"
+                }
+            },
+            "required": [
+                "/capacity/{HardwareSerial}",
+                "/counter/{HardwareSerial}",
+                "/logs/{HardwareSerial}",
+                "/polarity/{HardwareSerial}"
+            ],
+            "title": "Paths"
+        },
+        "CapacityHardwareSerial": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "get": {
+                    "$ref": "#/definitions/CapacityHardwareSerialGet"
+                },
+                "parameters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Parameter"
+                    }
+                },
+                "post": {
+                    "$ref": "#/definitions/CapacityHardwareSerialPost"
+                }
+            },
+            "required": [
+                "get",
+                "parameters",
+                "post"
+            ],
+            "title": "CapacityHardwareSerial"
+        },
+        "CapacityHardwareSerialGet": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "summary": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {}
+                },
+                "responses": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/PurpleResponse"
+                    }
+                },
+                "operationId": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "description",
+                "operationId",
+                "responses",
+                "summary",
+                "tags"
+            ],
+            "title": "CapacityHardwareSerialGet"
+        },
+        "PurpleResponse": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "content": {
+                    "$ref": "#/definitions/PurpleContent"
+                }
+            },
+            "required": [
+                "description"
+            ],
+            "title": "PurpleResponse"
+        },
+        "PurpleContent": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "application/json": {
+                    "$ref": "#/definitions/PurpleApplicationJSON"
+                }
+            },
+            "required": [
+                "application/json"
+            ],
+            "title": "PurpleContent"
+        },
+        "PurpleApplicationJSON": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "schema": {
+                    "$ref": "#/definitions/PurpleSchema"
+                }
+            },
+            "required": [
+                "schema"
+            ],
+            "title": "PurpleApplicationJSON"
+        },
+        "PurpleSchema": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "properties": {
+                    "$ref": "#/definitions/PurpleProperties"
+                }
+            },
+            "required": [
+                "properties",
+                "type"
+            ],
+            "title": "PurpleSchema"
+        },
+        "PurpleProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "value": {
+                    "$ref": "#/definitions/DeviceHardwareSerial"
+                }
+            },
+            "required": [
+                "value"
+            ],
+            "title": "PurpleProperties"
+        },
+        "Parameter": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "schema": {
+                    "$ref": "#/definitions/ParameterSchema"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "in": {
+                    "type": "string"
+                },
+                "required": {
+                    "type": "boolean"
+                },
+                "description": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "description",
+                "in",
+                "name",
+                "required",
+                "schema"
+            ],
+            "title": "Parameter"
+        },
+        "ParameterSchema": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "type"
+            ],
+            "title": "ParameterSchema"
+        },
+        "CapacityHardwareSerialPost": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "summary": {
+                    "type": "string"
+                },
+                "operationId": {
+                    "type": "string"
+                },
+                "responses": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/PostResponse"
+                    }
+                },
+                "description": {
+                    "type": "string"
+                },
+                "requestBody": {
+                    "$ref": "#/definitions/PurpleRequestBody"
+                }
+            },
+            "required": [
+                "description",
+                "operationId",
+                "requestBody",
+                "responses",
+                "summary"
+            ],
+            "title": "CapacityHardwareSerialPost"
+        },
+        "PurpleRequestBody": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "content": {
+                    "$ref": "#/definitions/FluffyContent"
+                }
+            },
+            "required": [
+                "content"
+            ],
+            "title": "PurpleRequestBody"
+        },
+        "FluffyContent": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "application/json": {
+                    "$ref": "#/definitions/FluffyApplicationJSON"
+                }
+            },
+            "required": [
+                "application/json"
+            ],
+            "title": "FluffyContent"
+        },
+        "FluffyApplicationJSON": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "schema": {
+                    "$ref": "#/definitions/FluffySchema"
+                }
+            },
+            "required": [
+                "schema"
+            ],
+            "title": "FluffyApplicationJSON"
+        },
+        "FluffySchema": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "properties": {
+                    "$ref": "#/definitions/FluffyProperties"
+                },
+                "required": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "properties",
+                "required",
+                "type"
+            ],
+            "title": "FluffySchema"
+        },
+        "FluffyProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "value": {
+                    "$ref": "#/definitions/CounterModification"
+                }
+            },
+            "required": [
+                "value"
+            ],
+            "title": "FluffyProperties"
+        },
+        "PostResponse": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "description": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "description"
+            ],
+            "title": "PostResponse"
+        },
+        "CounterHardwareSerial": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "get": {
+                    "$ref": "#/definitions/CounterHardwareSerialGet"
+                },
+                "parameters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Parameter"
+                    }
+                },
+                "post": {
+                    "$ref": "#/definitions/CounterHardwareSerialPost"
+                }
+            },
+            "required": [
+                "get",
+                "parameters",
+                "post"
+            ],
+            "title": "CounterHardwareSerial"
+        },
+        "CounterHardwareSerialGet": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "summary": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {}
+                },
+                "responses": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/FluffyResponse"
+                    }
+                },
+                "operationId": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "description",
+                "operationId",
+                "responses",
+                "summary",
+                "tags"
+            ],
+            "title": "CounterHardwareSerialGet"
+        },
+        "FluffyResponse": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "content": {
+                    "$ref": "#/definitions/TentacledContent"
+                },
+                "headers": {
+                    "$ref": "#/definitions/Headers"
+                }
+            },
+            "required": [
+                "description"
+            ],
+            "title": "FluffyResponse"
+        },
+        "TentacledContent": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "application/json": {
+                    "$ref": "#/definitions/TentacledApplicationJSON"
+                }
+            },
+            "required": [
+                "application/json"
+            ],
+            "title": "TentacledContent"
+        },
+        "TentacledApplicationJSON": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "schema": {
+                    "$ref": "#/definitions/TentacledSchema"
+                }
+            },
+            "required": [
+                "schema"
+            ],
+            "title": "TentacledApplicationJSON"
+        },
+        "TentacledSchema": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "properties": {
+                    "$ref": "#/definitions/PurpleProperties"
+                },
+                "required": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "properties",
+                "required",
+                "type"
+            ],
+            "title": "TentacledSchema"
+        },
+        "Headers": {
+            "type": "object",
+            "additionalProperties": false,
+            "title": "Headers"
+        },
+        "CounterHardwareSerialPost": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "summary": {
+                    "type": "string"
+                },
+                "operationId": {
+                    "type": "string"
+                },
+                "responses": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/PostResponse"
+                    }
+                },
+                "description": {
+                    "type": "string"
+                },
+                "requestBody": {
+                    "$ref": "#/definitions/FluffyRequestBody"
+                }
+            },
+            "required": [
+                "description",
+                "operationId",
+                "requestBody",
+                "responses",
+                "summary"
+            ],
+            "title": "CounterHardwareSerialPost"
+        },
+        "FluffyRequestBody": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "content": {
+                    "$ref": "#/definitions/TentacledContent"
+                }
+            },
+            "required": [
+                "content"
+            ],
+            "title": "FluffyRequestBody"
+        },
+        "LogsHardwareSerial": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "get": {
+                    "$ref": "#/definitions/LogsHardwareSerialGet"
+                },
+                "parameters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Parameter"
+                    }
+                },
+                "post": {
+                    "$ref": "#/definitions/LogsHardwareSerialPost"
+                }
+            },
+            "required": [
+                "get",
+                "parameters",
+                "post"
+            ],
+            "title": "LogsHardwareSerial"
+        },
+        "LogsHardwareSerialGet": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "summary": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {}
+                },
+                "responses": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/TentacledResponse"
+                    }
+                },
+                "operationId": {
+                    "type": "string"
+                },
+                "requestBody": {
+                    "$ref": "#/definitions/GetRequestBody"
+                },
+                "description": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "description",
+                "operationId",
+                "requestBody",
+                "responses",
+                "summary",
+                "tags"
+            ],
+            "title": "LogsHardwareSerialGet"
+        },
+        "GetRequestBody": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "content": {
+                    "$ref": "#/definitions/StickyContent"
+                },
+                "description": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "content",
+                "description"
+            ],
+            "title": "GetRequestBody"
+        },
+        "StickyContent": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "application/json": {
+                    "$ref": "#/definitions/StickyApplicationJSON"
+                }
+            },
+            "required": [
+                "application/json"
+            ],
+            "title": "StickyContent"
+        },
+        "StickyApplicationJSON": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "schema": {
+                    "$ref": "#/definitions/StickySchema"
+                }
+            },
+            "required": [
+                "schema"
+            ],
+            "title": "StickyApplicationJSON"
+        },
+        "StickySchema": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "properties": {
+                    "$ref": "#/definitions/TentacledProperties"
+                }
+            },
+            "required": [
+                "properties",
+                "type"
+            ],
+            "title": "StickySchema"
+        },
+        "TentacledProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "intervalStart": {
+                    "$ref": "#/definitions/DeviceHardwareSerial"
+                },
+                "intervalEnd": {
+                    "$ref": "#/definitions/DeviceHardwareSerial"
+                },
+                "dataType": {
+                    "$ref": "#/definitions/CounterModification"
+                },
+                "excludeManualChanges": {
+                    "$ref": "#/definitions/IsEntrance"
+                }
+            },
+            "required": [
+                "dataType",
+                "excludeManualChanges",
+                "intervalEnd",
+                "intervalStart"
+            ],
+            "title": "TentacledProperties"
+        },
+        "TentacledResponse": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "content": {
+                    "$ref": "#/definitions/IndigoContent"
+                }
+            },
+            "required": [
+                "description"
+            ],
+            "title": "TentacledResponse"
+        },
+        "IndigoContent": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "application/json": {
+                    "$ref": "#/definitions/IndigoApplicationJSON"
+                }
+            },
+            "required": [
+                "application/json"
+            ],
+            "title": "IndigoContent"
+        },
+        "IndigoApplicationJSON": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "schema": {
+                    "$ref": "#/definitions/IndigoSchema"
+                }
+            },
+            "required": [
+                "schema"
+            ],
+            "title": "IndigoApplicationJSON"
+        },
+        "IndigoSchema": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "items": {
+                    "$ref": "#/definitions/Items"
+                }
+            },
+            "required": [
+                "items",
+                "type"
+            ],
+            "title": "IndigoSchema"
+        },
+        "Items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "properties": {
+                    "$ref": "#/definitions/ItemsProperties"
+                }
+            },
+            "required": [
+                "properties",
+                "type"
+            ],
+            "title": "Items"
+        },
+        "ItemsProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "": {
+                    "$ref": "#/definitions/Empty"
+                }
+            },
+            "required": [
+                ""
+            ],
+            "title": "ItemsProperties"
+        },
+        "Empty": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "$ref": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "$ref"
+            ],
+            "title": "Empty"
+        },
+        "LogsHardwareSerialPost": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "summary": {
+                    "type": "string"
+                },
+                "operationId": {
+                    "type": "string"
+                },
+                "responses": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/PostResponse"
+                    }
+                },
+                "description": {
+                    "type": "string"
+                },
+                "requestBody": {
+                    "$ref": "#/definitions/TentacledRequestBody"
+                }
+            },
+            "required": [
+                "description",
+                "operationId",
+                "requestBody",
+                "responses",
+                "summary"
+            ],
+            "title": "LogsHardwareSerialPost"
+        },
+        "TentacledRequestBody": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "content": {
+                    "$ref": "#/definitions/IndecentContent"
+                },
+                "description": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "content",
+                "description"
+            ],
+            "title": "TentacledRequestBody"
+        },
+        "IndecentContent": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "application/json": {
+                    "$ref": "#/definitions/IndecentApplicationJSON"
+                }
+            },
+            "required": [
+                "application/json"
+            ],
+            "title": "IndecentContent"
+        },
+        "IndecentApplicationJSON": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "schema": {
+                    "$ref": "#/definitions/IndecentSchema"
+                }
+            },
+            "required": [
+                "schema"
+            ],
+            "title": "IndecentApplicationJSON"
+        },
+        "IndecentSchema": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "properties": {
+                    "$ref": "#/definitions/StickyProperties"
+                },
+                "required": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "properties",
+                "required",
+                "type"
+            ],
+            "title": "IndecentSchema"
+        },
+        "StickyProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "isEntrance": {
+                    "$ref": "#/definitions/IsEntrance"
+                },
+                "counterModification": {
+                    "$ref": "#/definitions/CounterModification"
+                }
+            },
+            "required": [
+                "counterModification",
+                "isEntrance"
+            ],
+            "title": "StickyProperties"
+        },
+        "PolarityHardwareSerial": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "get": {
+                    "$ref": "#/definitions/PolarityHardwareSerialGet"
+                },
+                "parameters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Parameter"
+                    }
+                },
+                "post": {
+                    "$ref": "#/definitions/CapacityHardwareSerialPost"
+                }
+            },
+            "required": [
+                "get",
+                "parameters",
+                "post"
+            ],
+            "title": "PolarityHardwareSerial"
+        },
+        "PolarityHardwareSerialGet": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "summary": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {}
+                },
+                "responses": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/StickyResponse"
+                    }
+                },
+                "operationId": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "description",
+                "operationId",
+                "responses",
+                "summary",
+                "tags"
+            ],
+            "title": "PolarityHardwareSerialGet"
+        },
+        "StickyResponse": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "content": {
+                    "$ref": "#/definitions/FluffyContent"
+                }
+            },
+            "required": [
+                "description"
+            ],
+            "title": "StickyResponse"
+        },
+        "Server": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "http"
+                    ]
+                }
+            },
+            "required": [
+                "url"
+            ],
+            "title": "Server"
+        }
+    }
+}
