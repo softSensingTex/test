@@ -1,0 +1,405 @@
+{
+  "openapi": "3.1.0",
+  "x-stoplight": {
+    "id": "catsm8ev0esum"
+  },
+  "info": {
+    "title": "Traffic Mat 1.0",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://sensinghealth.ddns.net/api/trafficMat"
+    }
+  ],
+  "paths": {
+    "/logs/{HardwareSerial}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "HardwareSerial",
+          "in": "path",
+          "required": true,
+          "description": "The Hardware Serial parameter is a legible identifier of the device, always provided to the customers."
+        }
+      ],
+      "get": {
+        "summary": "Get logs of a device",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "": {
+                        "$ref": "#/components/schemas/Log"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. The body of the request is missing or not valid. Please, check our API documentation."
+          },
+          "404": {
+            "description": "Traffic Mat not found."
+          },
+          "500": {
+            "description": "Internal Server Error."
+          }
+        },
+        "operationId": "get-logs",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "intervalStart": {
+                    "type": "integer",
+                    "description": "Start of the interval that we want to get the logs of. Always in Unix Timestamp Seconds Format."
+                  },
+                  "intervalEnd": {
+                    "type": "integer",
+                    "description": "End of the interval that we want to get the logs of. Always in Unix Timestamp Seconds Format."
+                  },
+                  "dataType": {
+                    "type": "integer",
+                    "default": 0,
+                    "enum": [
+                      0,
+                      1,
+                      2
+                    ],
+                    "description": "The data type specifies what type of data do we want to retrieve in this request. <b>0</b> is used to get all the types of logs (entrances and exits),<B> 1</B> is used to get only the logs of the entrances. <b>2</b> is used to get only the logs of the exits."
+                  },
+                  "excludeManualChanges": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "This argument specifies if we want to include in the logs, the events caused by manual modifications of the counter (meaning a change in the counter of the device of more than 1."
+                  }
+                }
+              }
+            }
+          },
+          "description": "All the fields of the body are optional. If we don't specify a start and an end of the interval, we will get all the historic logs of the device. If we don't specify a dataType, we will get all the logs of entrances and exits.  If we don't specify to exclude the manual changes, we will get all the events, without excluding them."
+        },
+        "description": "This endpoint is used to fetch the logs of a device. It supports getting the logs between two dates, and to get different types of logs, depending on the arguments passed in the body. It also supports to get the logs of the manual changes of the counter."
+      }
+    },
+    "/counter/{HardwareSerial}": {
+      "get": {
+        "summary": "Get the last counter value of the device",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "integer",
+                      "description": "This value specifies the counter value of the Traffic Mat."
+                    }
+                  },
+                  "required": [
+                    "value"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Traffic Mat not found.",
+            "headers": {}
+          },
+          "500": {
+            "description": "Internal Server Error."
+          }
+        },
+        "operationId": "get-counter",
+        "description": "Request to get the last counter value of the Traffic Mat specified in the HardwareSerial parameter."
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "HardwareSerial",
+          "in": "path",
+          "required": true,
+          "description": "The Hardware Serial parameter is a legible identifier of the device, always provided to the customers."
+        }
+      ],
+      "post": {
+        "summary": "Update the counter value of the device",
+        "operationId": "post-counter",
+        "responses": {
+          "200": {
+            "description": "OK."
+          },
+          "400": {
+            "description": "Bad Request. The body of the request is missing or not valid. Please, check our API documentation."
+          },
+          "404": {
+            "description": "Traffic Mat not found."
+          },
+          "500": {
+            "description": "Internal Server Error."
+          }
+        },
+        "description": "Request to update the counter value of the Traffic Mat specified in the HardwareSerial parameter.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": "integer",
+                    "description": "This parameter is mandatory and specifies the new counter value that will be set on the Traffic Mat."
+                  }
+                },
+                "required": [
+                  "value"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/capacity/{HardwareSerial}": {
+      "get": {
+        "summary": "Get the capacity of the device",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "integer",
+                      "description": "This value specifies the capacity of the Traffic Mat."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Traffic Mat not found."
+          },
+          "500": {
+            "description": "Internal Server Error."
+          }
+        },
+        "operationId": "get-capacity",
+        "description": "Request to get the capacity of the Traffic Mat specified in the HardwareSerial parameter."
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "HardwareSerial",
+          "in": "path",
+          "required": true,
+          "description": "The Hardware Serial parameter is a legible identifier of the device, always provided to the customers."
+        }
+      ],
+      "post": {
+        "summary": "Update the capacity of the device",
+        "operationId": "post-capacity",
+        "responses": {
+          "200": {
+            "description": "OK."
+          },
+          "400": {
+            "description": "Bad Request. The body of the request is missing or not valid. Please, check our API documentation."
+          },
+          "404": {
+            "description": "Traffic Mat not found."
+          },
+          "500": {
+            "description": "Internal Server Error."
+          }
+        },
+        "description": "Request to update the capacity of the Traffic Mat specified in the HardwareSerial parameter.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": "integer",
+                    "description": "This parameter is mandatory and specifies the new capacity that will be set on the Traffic Mat.",
+                    "minimum": 1
+                  }
+                },
+                "required": [
+                  "value"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/polarity/{HardwareSerial}": {
+      "get": {
+        "summary": "Get the polarity of the device",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "integer",
+                      "enum": [
+                        0,
+                        1
+                      ],
+                      "description": "This body specifies the polarity of the Traffic Mat. <b>0</b> is for default polarity. <b> 1</b> is for inverted polarity."
+                    }
+                  },
+                  "required": [
+                    "value"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Traffic Mat not found."
+          },
+          "500": {
+            "description": "Internal Server Error."
+          }
+        },
+        "operationId": "get-polarity",
+        "description": "Request to get the polarity of the Traffic Mat specified in the HardwareSerial parameter."
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "HardwareSerial",
+          "in": "path",
+          "required": true,
+          "description": "The Hardware Serial parameter is a legible identifier of the device, always provided to the customers."
+        }
+      ],
+      "post": {
+        "summary": "Update the polarity of the device",
+        "operationId": "post-polarity",
+        "responses": {
+          "200": {
+            "description": "OK."
+          },
+          "400": {
+            "description": "Bad Request. The body of the request is missing or not valid. Please, check our API documentation."
+          },
+          "404": {
+            "description": "Traffic Mat not found."
+          },
+          "500": {
+            "description": "Internal Server Error."
+          }
+        },
+        "description": "Request to update the polarity of the Traffic Mat specified in the HardwareSerial parameter.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": "integer",
+                    "description": "This parameter is mandatory and specifies the new polarity that will be set on the Traffic Mat. <b>0</b> is for default polarity. <b> 1</b> is for inverted polarity.",
+                    "enum": [
+                      0,
+                      1
+                    ]
+                  }
+                },
+                "required": [
+                  "value"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Log": {
+        "title": "Log",
+        "x-stoplight": {
+          "id": "39403e353e989"
+        },
+        "type": "object",
+        "description": "This object is used to store the events of entrances and exits.",
+        "examples": [
+          {
+            "objectId": "24char-random-mongodb-id",
+            "time": 1677583422,
+            "isEntrance": true,
+            "counterModification": 1
+          }
+        ],
+        "properties": {
+          "objectId": {
+            "type": "string",
+            "description": "Unique identifier assigned automatically by MongoDB to each log."
+          },
+          "deviceHardwareSerial": {
+            "type": "string",
+            "description": "Device identifier of the device that generated the log."
+          },
+          "creationDate": {
+            "type": "integer",
+            "format": "date",
+            "description": "Timestamp of the moment that the event has been registered. Always in Timestamp UNIX Format. Default value is the creation time of the object."
+          },
+          "isEntrance": {
+            "type": "boolean",
+            "description": "Specifies whether the event is an enter or an exit.",
+            "default": true
+          },
+          "counterModification": {
+            "type": "integer",
+            "description": "Only appears when the event has a counter modification greater than 1 (Representing a manual update of the counter).",
+            "default": 1,
+            "minimum": 1
+          }
+        },
+        "required": [
+          "deviceHardwareSerial"
+        ]
+      }
+    }
+  }
+}
